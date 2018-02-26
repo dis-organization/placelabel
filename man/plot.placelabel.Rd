@@ -4,11 +4,19 @@
 \alias{plot.placelabel}
 \title{Plot place label}
 \usage{
-\method{plot}{placelabel}(x, adj = NULL, pos = NULL, offset = 0.5,
-  vfont = NULL, cex = 1, col = NULL, font = NULL, ..., add = FALSE)
+\method{plot}{placelabel}(x, labels = NULL, adj = NULL, pos = NULL,
+  offset = 0.5, vfont = NULL, cex = 1, col = NULL, font = NULL, ...,
+  add = FALSE)
 }
 \arguments{
 \item{x}{placelabel}
+
+\item{labels}{a character vector or \link{expression} specifying
+    the \emph{text} to be written.  An attempt is made to coerce other
+    language objects (names and calls) to expressions, and vectors and
+    other classed objects to character vectors by \code{\link{as.character}}.
+    If \code{labels} is longer than \code{x} and
+    \code{y}, the coordinates are recycled to the length of \code{labels}.}
 
 \item{adj}{one or two values in \eqn{[0, 1]} which specify the x
     (and optionally y) adjustment of the labels.  On most devices values
@@ -60,6 +68,13 @@ when `add = FALSE`.
 \examples{
 library(sf)
 north_carolina <- read_sf(system.file("shape/nc.shp", package="sf"))
-nc_labs <- placelabel(north_carolina["NAME"])
+nc_labs <- placelabel(north_carolina)
 plot(nc_labs)
+nc_labs <- placelabel(north_carolina, text = "NAME")
+plot(nc_labs, cex = 0.5)
+## leverage sf aesthetics without destroying plot layout
+plot(north_carolina[1], add = TRUE)
+plot(nc_labs, cex = 0.5, add = TRUE)
+plot(st_geometry(north_carolina))
+plot(nc_labs, "BIR74", add = TRUE, cex = 0.5)
 }

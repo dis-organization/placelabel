@@ -1,7 +1,9 @@
 Package: placelabel
-Version: 0.0.0.9000
-Title: What the Package Does (One Line, Title Case)
-Description: What the package does (one paragraph).
+Version: 0.0.1
+Title: Plot Labels as Spatial Data
+Description: A simple class 'placelabel' to represent a centroid of 
+ a spatial object with that object's attribute data. A placelabel
+ can be plotted on its own as raw text, or added to an existing plot. 
 Authors@R: person("Michael D.","Sumner", role = c("aut", "cre"), email =
     "mdsumner@gmail.com")
 License: GPL-3
@@ -9,3 +11,6 @@ Encoding: UTF-8
 LazyData: true
 ByteCompile: true
 RoxygenNote: 6.0.1
+Depends: sf
+Imports: 
+    tibble

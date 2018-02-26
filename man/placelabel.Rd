@@ -8,16 +8,21 @@
 \alias{placelabel.sf}
 \title{Place labels}
 \usage{
-placelabel(x, ...)
+placelabel(x, text = NULL, ...)
 
-\method{placelabel}{default}(x, ...)
+\method{placelabel}{default}(x, text = NULL, ...)
 
-\method{placelabel}{sf}(x, ...)
+\method{placelabel}{sf}(x, text = NULL, ...)
 }
 \arguments{
 \item{x}{a spatial object, sf or anything convertible with `sf::st_as_sf` supported}
 
+\item{text}{the name of the column to be used as a label}
+
 \item{...}{arguments passed to `graphics::plot`,}
+}
+\value{
+a data frame 'placelabel'
 }
 \description{
 A place label is a simple data structure that exists to plot
@@ -29,4 +34,7 @@ north_carolina <- read_sf(system.file("shape/nc.shp", package="sf"))
 nc_labs <- placelabel(north_carolina)
 plot(st_geometry(north_carolina))
 plot(nc_labs, add = TRUE, cex = 0.8)
+}
+\seealso{
+plot.placelabel
 }
