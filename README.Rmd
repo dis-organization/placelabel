@@ -1,0 +1,22 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# placelabel
+
+The goal of placelabel is to plot place labels but it's ultimately doomed. 
+
+This would be better as a `text` method for sf objects but sf plots rarely leave the graphics frame in a state that can be added to. Hence doom. 
+
+Use `ggplot2::geom_sf` in the dev version. 
+
